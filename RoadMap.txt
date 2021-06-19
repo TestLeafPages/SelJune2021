@@ -1,0 +1,86 @@
+RoadMap of Todays class
+-----------------------
+
+1. Selenium Introduction
+2. How to set up your work environment?
+	Open a Maven Project
+	Update with the dependencies required in pom.xml(Project Object Model or POM is the fundamental unit of work in Maven)
+	Force update in case pom.xml throws an error.
+	How to take a code for system explorer?
+
+		READY TO CODE!!!!
+
+3. Launch a website and interact with the webElements
+	A brief look up on the HTML and its elements
+	LOCATORS ( 8 Locators)
+
+4. Sample webApplication to implement all the above
+	URL: http://leaftaps.com/opentaps/control/main
+	Username : demosalesmanager
+	Password : crmsfa
+	(a) Steps to Login ( Login,java)
+	(b) Steps to CreateLead (CreateLead.java)
+		( You will learn --> To Locate a web element 
+			         --> To Write a text into a field sendKeys()
+				 --> To Get text from the web element getText()
+				 --> To Get the title of a web page getTitle()
+				 --> To Use few string operations equals, replaceall
+				 --> To handle the drop down web elements
+                                                   locate the webElement
+                     				   Associate the webElement with the select class
+					           Use best suited locators
+                      		        	   valuee, VisibleText and index
+
+
+				 --> Related exceptions
+					(NoSuchElementException )
+							 
+
+
+recap:
+
+<input>
+<button>
+<table>
+<tr>
+<td>
+<div>
+<a>
+<span>
+<iframe>
+<img>
+
+Structure of HTML element:
+1. Tag ( Mandatory)( pink)
+2. Attributes ( Orange)
+3. Attribute values
+4. Text (black)
+
+LOCATORS ( 8 locators)
+
+1. id  - Unique; Should not have any numbers in it.
+2. name - Unique; When I cannot go for the "id"
+3. linkText 
+4. class - Should not have spaces
+5. tagName
+6. XPath
+7. Css Selector
+8. Partial Link Text
+
+iD with numbers cannot be used
+ext-gen603
+ext-gen589
+
+
+DropDown 
+
+1. Select tag
+2. options --> options displayed
+3. Visible Text (Black)
+   value
+   Index (Position)
+
+
+
+							 
+							 
