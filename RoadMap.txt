@@ -58,10 +58,10 @@ Structure of HTML element:
 
 LOCATORS ( 8 locators)
 
-1. id  - Unique; Should not have any numbers in it.
-2. name - Unique; When I cannot go for the "id"
-3. linkText 
-4. class - Should not have spaces
+1. id  - attribute;  Unique; Should not have any numbers in it.
+2. name - attribute;  Unique; When I cannot go for the "id"
+3. linkText  text()
+4. class - attribute;  Should not have spaces
 5. tagName
 6. XPath
 7. Css Selector
@@ -79,6 +79,121 @@ DropDown
 3. Visible Text (Black)
    value
    Index (Position)
+
+20-June-2021
+===========
+
+XPATH:
+
+1. What is Xpath?
+2. When do we go for XPath?
+When the locators are not available for the webElement
+
+1. Absolute XPath:
+
+/html/body/div[2]/div[2]/div/h2
+--> Take long time to locate
+--> High risk of loosing its position in the DOM, when the developer changes.
+
+
+2. Relative Xpath:
+
+A) Attribute Based XPath:
+=========================
+syntax:
+   //tagname[@attribute='attribute']
+
+   	//input[@id='username']
+   	//input[@class='decorativeSubmit']
+
+B)Text based Xpath:
+===================
+ Syntax:
+     //tagname[text()='Text']
+
+     	//label[text()='Username']
+
+c) Partial Match Xpath:
+=======================
+
+--> Partial attribute based Xpath
+    -----------------------------
+   //tagname[contains(@attribute,'part of the attribute value')]
+
+   	//input[contains(@class,'Submit')]
+   	//input[contains(@class,'decorativeSu')]
+
+--> Partial Text based Xpath
+    -----------------------------
+//tagename[contains(text(),'part of the text')]
+
+	//title[contains(text(),'TestLeaf ')]
+	//label[contains(text(),'Pass')]
+
+d) Collection based Xpath (Index based Xpath):
+
+	( //tagname[@attribute='attribute Value'])[indexValue]
+	(//input[@class='inputLogin'])[2]
+
+ClassRoom 1:
+1. Write the Login testCase using Xpath.
+
+
+AXES BASED XPATH / RELATIONSHIP BASED XPATH
+===========================================
+
+1. Parent To child:
+	//form[@id='login']/p[2]
+2. GrandParent to child Relation
+	(//form[@id='login']//label)
+3.Child to parent:
+	//input[@id='username']/parent::p
+	//input[@id='username']/..
+4.Child to Grand parent:
+	//input[@id='password']/ancestor::form
+5.Elder Sibling toYounger Sibling
+	//label[text()='Username']/following-sibling::input
+6.Younger Sibling to elder Sibling
+	//input[@id='username']/preceding-sibling::label
+7.Elder cousin to Younger cousin
+	//input[@id='username']/following::label
+8.Younger cousin to Elder cousin
+	//label[text()='Password']/preceding::input
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
