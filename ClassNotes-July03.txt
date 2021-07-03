@@ -1,0 +1,169 @@
+Agenda:
+
+1. WebTable
+2. Target Locators
+    - Alerts
+    - Frames
+    - Window Handling(Yet to be handled)
+
+WEBTABLE:
+---------
+How to handle my webTable?
+
+1. Consider  table as table itself
+
+Find the table as such
+--> driver
+--> table = driver.table
+--> Row --> table.row
+--> Column --> Row.column ( data)
+
+Structure of table in DOM:
+table1 - 5 rows
+<tr>
+	td
+	td
+</tr>
+
+table2 - 5 rows
+<tr>
+	td
+	td
+<tr>
+
+table3 - 5 rows
+<tr>
+	td
+	td
+<tr>
+
+2. Consider the table as webelemnts, access each of the data using Xpath
+****************************************************************************
+
+2. Target Locators
+    - Alerts
+    - Frames
+    - Window Handling
+
+				ALERT
+				------
+
+-- POPUP dialog box
+warning, message, ask me a small confirmation
+
+
+Types:
+1. Window based popup
+    --> gmail--> compose--> attachment--> dialog box pops up
+     --> ROBOT class
+
+2. Web based pop up:
+Types:
+1. Modal dialog
+****************
+  -- We cannot inspect the alert( cannot right-click)
+       (Because alerts are written in DOM using javaScript ( not HTML))
+  -- We cannot interact with the main page, untill the alert is handled
+
+Types of Modal dialog:
+---------------------
+
+1. Simple alert        --  OK 
+2. Confirmation Alert  -- Ok, Cancel
+3. Prompt Alert        -- textBox, Ok, cancel
+
+
+How do handle an alert?
+-----------------------
+-- findElement() - can this be used? - NO
+-- Handle using the Interface -- Alert
+   Implementation class of Alert interface --> RemoteAlert
+
+Ok                   --> accept()  --> return - void  (Positive actions)
+cancel               --> dismiss()--> return - void   (Negative actions)
+To enter the text    --> sendKeys()--> return - void
+To get the text(msg) --> getText() --> returns String
+
+ALERT EXCEPTIONS:
+----------------
+1)
+// Throws org.openqa.selenium.NoAlertPresentException
+   Occurs when trying to interact with the alert that is not active curently
+
+2)
+// org.openqa.selenium.UnhandledAlertException
+   Occurs when Alert is still alive and	
+       I try to access the main window
+
+
+How do i verify if main window is not active?
+How do i sense if an alert is present?
+-- ExplicitlyWait ( will be covered)
+
+2. Non-Modal Dialog:(sweet Alert)
+
+// Handled as a normal webElement
+// Can write Xpath
+// Can use findElement()
+
+*************************************************************************
+				Frames
+				******
+
+-- DOM inside a DOM
+
+How to identify a Frame is present?
+1. look for iframes ot frames tag in your DOM
+2. Inspect the element
+
+How does it appear in DOM?
+
+1. <iframe> -- inline frame (floating frame)
+2. <frame>  -- static frame/immovable
+
+What if my element is inside a frame and try to access it without enetering the frame?
+
+Throws Exception: NoSuchElementException
+             
+
+// How to access the frame?
+
+1. Select my frame through index
+2. Select my frame attribute -- id/name
+3. Select my frame as normal as a webelement (Xpath)
+
+Nested Frame:
+-------------
+Structure:
+
+-- Main document Starts here
+<html?
+
+--
+<html>
+Frame 0
+   WebElement
+</html>
+-- still inside the frame
+
+
+New DOM
+<html>
+Frame 1
+  webElement
+  Frame 2
+    webElement2
+</html>
+
+-- Main document ends here
+</html>
+
+RETURNING THE CONROL TO THE PREVIOUS LEVELS :
+DefaultContent -- Frame2 control to main DOM  (Top of the DOM)
+parentFrame    -- Frame2 to Frame1 ( One level higher)
+
+
+EXCEPTIONS OF FRAMES:
+
+NoSuchFrameException
+NoSuchElementException
